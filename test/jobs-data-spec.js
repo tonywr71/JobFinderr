@@ -19,7 +19,7 @@ describe("get jobs", function(){
             .then(resetJobs)
             .then(jobsData.seedJobs)
             .then(jobsData.findJobs)
-            .then(function(collection){
+            .then(function setJobs(collection){
                 jobs = collection;
                 done();
             });     
@@ -30,7 +30,7 @@ describe("get jobs", function(){
     });
     
     it("should have a job with a title", function() {
-        expect(jobs[0].title).to.not.be.empty;;
+        expect(jobs[0].title).to.not.be.empty;
     });
 
     it("should have a job with a description", function() {
