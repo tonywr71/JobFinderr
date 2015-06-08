@@ -13,6 +13,13 @@ exports.connectDB = Promise.promisify(mongoose.connect, mongoose);
 
 var createJob = Promise.promisify(Job.create, Job);
 
+var jobs = [
+    {title:'Cook', description: 'You will be making bagels'},
+    {title:'Waiter', description: 'You will be putting food on peoples tables'},
+    {title:'Programmer', description: 'You will be mindlessly typing for hours'},
+    {title:'Axe Maker', description: 'You need many axes made... so many..'}
+    ];
+    
 exports.seedJobs = function() {
         return findJobs({}).then(function(collection) {
             if(collection.length === 0) {
@@ -24,9 +31,4 @@ exports.seedJobs = function() {
    
 };
 
-var jobs = [
-    {title:'Cook', description: 'You will be making bagels'},
-    {title:'Waiter', description: 'You will be putting food on peoples tables'},
-    {title:'Programmer', description: 'You will be mindlessly typing for hours'},
-    {title:'Axe Maker', description: 'You need many axes made... so many..'}
-    ];
+

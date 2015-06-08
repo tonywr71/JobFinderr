@@ -9,7 +9,8 @@ app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/api/jobs', function(req, res) {
-   jobsData.findJobs().then(function(error, collection) {
+   jobsData.findJobs().then(function(collection) {
+        console.log('collection length:' + collection.length);
         res.send(collection);
     });
 });
@@ -20,7 +21,8 @@ app.get('*', function(req, res) {
 });
 
 //mongoose.connect('mongodb://localhost/jobfinder');
-jobsData.connectDB('mongodb://psdev:psdev1@ds043952.mongolab.com:43952/jobfinder')
+//jobsData.connectDB('mongodb://psdev:psdev1@ds043952.mongolab.com:43952/jobfinder')
+jobsData.connectDB('mongodb://localhost/jobfinder')
     .then(function() {
         console.log('connected to mongodb successfully!');
         jobsData.seedJobs();
